@@ -4,6 +4,7 @@ metadata:
   name: example-cmppproxy
 spec:
   # Add fields here
+  image: nginx:alpine
   sourceID: 999
   account: test
   numConnections: 1

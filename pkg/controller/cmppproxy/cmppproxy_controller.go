@@ -136,6 +136,10 @@ func (r *ReconcileCMPPProxy) Reconcile(request reconcile.Request) (reconcile.Res
 		found.Spec.Replicas = &size
 		pendingUpdates = true
 	}
+	if found.Spec.Template.Spec.Containers[0].Image != instance.Spec.Image {
+		found.Spec.Template.Spec.Containers[0].Image = instance.Spec.Image
+		pendingUpdates = true
+	}
 	serverAddr := instance.Spec.ServerAddr
 	account := instance.Spec.Account
 	password := instance.Spec.Password
@@ -186,6 +190,7 @@ func (r *ReconcileCMPPProxy) Reconcile(request reconcile.Request) (reconcile.Res
 func (r *ReconcileCMPPProxy) deploymentForCMPPProxy(m *cmppv1alpha1.CMPPProxy) *appsv1.Deployment {
 	ls := labelsForCMPPProxy(m.Name)
 	replicas := m.Spec.NumConnections
+	image := m.Spec.Image
 	serverAddr := m.Spec.ServerAddr
 	account := m.Spec.Account
 	password := m.Spec.Password
@@ -208,8 +213,8 @@ func (r *ReconcileCMPPProxy) deploymentForCMPPProxy(m *cmppv1alpha1.CMPPProxy) *
 				},
 				Spec: corev1.PodSpec{
 					Containers: []corev1.Container{{
-						Image: "nginx:alpine",
-						Name:  "nginx",
+						Image: image,
+						Name:  "cmppproxy",
 						Ports: []corev1.ContainerPort{{
 							ContainerPort: 80,
 							Name:          "http",
@@ -309,7 +314,5 @@ func setEnvVarIfNeeded(envs *[]corev1.EnvVar, key string, value string) bool {
 		*envs = append(*envs, env)
 	}
 
-	// fmt.Printf("updated existing %v", existing)
-	// fmt.Printf("updated envs %v", envs)
 	return true
 }
