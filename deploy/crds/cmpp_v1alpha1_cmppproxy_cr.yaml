@@ -1,0 +1,11 @@
+apiVersion: cmpp.io/v1alpha1
+kind: CMPPProxy
+metadata:
+  name: example-cmppproxy
+spec:
+  # Add fields here
+  sourceID: 999
+  account: test
+  numConnections: 1
+  serverAddr: 127.0.0.4
+  sourceID: "899116"

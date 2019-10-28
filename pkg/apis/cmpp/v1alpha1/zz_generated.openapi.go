@@ -13,17 +13,17 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
-		"github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.HttpProxy":       schema_pkg_apis_cmpp_v1alpha1_HttpProxy(ref),
-		"github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.HttpProxySpec":   schema_pkg_apis_cmpp_v1alpha1_HttpProxySpec(ref),
-		"github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.HttpProxyStatus": schema_pkg_apis_cmpp_v1alpha1_HttpProxyStatus(ref),
+		"github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.CMPPProxy":       schema_pkg_apis_cmpp_v1alpha1_CMPPProxy(ref),
+		"github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.CMPPProxySpec":   schema_pkg_apis_cmpp_v1alpha1_CMPPProxySpec(ref),
+		"github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.CMPPProxyStatus": schema_pkg_apis_cmpp_v1alpha1_CMPPProxyStatus(ref),
 	}
 }
 
-func schema_pkg_apis_cmpp_v1alpha1_HttpProxy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_cmpp_v1alpha1_CMPPProxy(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "HttpProxy is the Schema for the httpproxies API",
+				Description: "CMPPProxy is the Schema for the cmppproxies API",
 				Properties: map[string]spec.Schema{
 					"kind": {
 						SchemaProps: spec.SchemaProps{
@@ -46,27 +46,27 @@ func schema_pkg_apis_cmpp_v1alpha1_HttpProxy(ref common.ReferenceCallback) commo
 					},
 					"spec": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.HttpProxySpec"),
+							Ref: ref("github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.CMPPProxySpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.HttpProxyStatus"),
+							Ref: ref("github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.CMPPProxyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.HttpProxySpec", "github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.HttpProxyStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.CMPPProxySpec", "github.com/sinoreps/cmpp-operator/pkg/apis/cmpp/v1alpha1.CMPPProxyStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_pkg_apis_cmpp_v1alpha1_HttpProxySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_cmpp_v1alpha1_CMPPProxySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "HttpProxySpec defines the desired state of HttpProxy",
+				Description: "CMPPProxySpec defines the desired state of CMPPProxy",
 				Properties:  map[string]spec.Schema{},
 			},
 		},
@@ -74,11 +74,11 @@ func schema_pkg_apis_cmpp_v1alpha1_HttpProxySpec(ref common.ReferenceCallback) c
 	}
 }
 
-func schema_pkg_apis_cmpp_v1alpha1_HttpProxyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_cmpp_v1alpha1_CMPPProxyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "HttpProxyStatus defines the observed state of HttpProxy",
+				Description: "CMPPProxyStatus defines the observed state of CMPPProxy",
 				Properties:  map[string]spec.Schema{},
 			},
 		},
