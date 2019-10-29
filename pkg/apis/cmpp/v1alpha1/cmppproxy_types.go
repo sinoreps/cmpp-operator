@@ -20,11 +20,11 @@ type CMPPProxySpec struct {
 	// +kubebuilder:validation:MinLength=1
 	ServerAddr string `json:"serverAddr"`
 
-	Account   string `json:"account"`
-	Password  string `json:"password"`
-	Version   string `json:"version"`
-	SourceID  string `json:"sourceID"`
-	ServiceID string `json:"serviceID"`
+	Account        string `json:"account"`
+	Password       string `json:"password"`
+	Version        string `json:"version"`
+	EnterpriseCode string `json:"enterpriseCode"`
+	ServiceCode    string `json:"serviceCode"`
 
 	NumConnections    int32  `json:"numConnections"`
 	ReportCallbackURL string `json:"reportCallbackURL"`

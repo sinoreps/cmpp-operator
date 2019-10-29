@@ -5,8 +5,8 @@ metadata:
 spec:
   # Add fields here
   image: nginx:alpine
-  sourceID: 999
+  enterpriseCode: 999
   account: test
   numConnections: 1
   serverAddr: 127.0.0.4
-  sourceID: "899116"
+  enterpriseCode: "899116"

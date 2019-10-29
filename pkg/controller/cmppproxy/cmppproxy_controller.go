@@ -143,14 +143,14 @@ func (r *ReconcileCMPPProxy) Reconcile(request reconcile.Request) (reconcile.Res
 	serverAddr := instance.Spec.ServerAddr
 	account := instance.Spec.Account
 	password := instance.Spec.Password
-	sourceID := instance.Spec.SourceID
-	serviceID := instance.Spec.ServiceID
+	enterpriseCode := instance.Spec.EnterpriseCode
+	serviceCode := instance.Spec.ServiceCode
 	envs := found.Spec.Template.Spec.Containers[0].Env
 	pendingUpdates = setEnvVarIfNeeded(&envs, "CMPP_SERVER_ADDR", serverAddr) || pendingUpdates
 	pendingUpdates = setEnvVarIfNeeded(&envs, "CMPP_ACCOUNT", account) || pendingUpdates
 	pendingUpdates = setEnvVarIfNeeded(&envs, "CMPP_PASSWORD", password) || pendingUpdates
-	pendingUpdates = setEnvVarIfNeeded(&envs, "CMPP_SOURCE_ID", sourceID) || pendingUpdates
-	pendingUpdates = setEnvVarIfNeeded(&envs, "CMPP_SERVICE_ID", serviceID) || pendingUpdates
+	pendingUpdates = setEnvVarIfNeeded(&envs, "CMPP_ENTERPRISE_CODE", enterpriseCode) || pendingUpdates
+	pendingUpdates = setEnvVarIfNeeded(&envs, "CMPP_SERVICE_CODE", serviceCode) || pendingUpdates
 	if pendingUpdates {
 		found.Spec.Template.Spec.Containers[0].Env = envs
 		err = r.client.Update(context.TODO(), found)
@@ -194,8 +194,8 @@ func (r *ReconcileCMPPProxy) deploymentForCMPPProxy(m *cmppv1alpha1.CMPPProxy) *
 	serverAddr := m.Spec.ServerAddr
 	account := m.Spec.Account
 	password := m.Spec.Password
-	sourceID := m.Spec.SourceID
-	serviceID := m.Spec.ServiceID
+	enterpriseCode := m.Spec.EnterpriseCode
+	serviceCode := m.Spec.ServiceCode
 
 	dep := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
@@ -233,12 +233,12 @@ func (r *ReconcileCMPPProxy) deploymentForCMPPProxy(m *cmppv1alpha1.CMPPProxy) *
 								Value: password,
 							},
 							corev1.EnvVar{
-								Name:  "CMPP_SOURCE_ID",
-								Value: sourceID,
+								Name:  "CMPP_ENTERPRISE_CODE",
+								Value: enterpriseCode,
 							},
 							corev1.EnvVar{
-								Name:  "CMPP_SERVICE_ID",
-								Value: serviceID,
+								Name:  "CMPP_SERVICE_CODE",
+								Value: serviceCode,
 							}},
 					}},
 				},
