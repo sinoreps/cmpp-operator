@@ -13,7 +13,8 @@ addons:
       - docker-ce
 
 install:
-  - echo "Please don't go get"
+  - mkdir -p build/_output/bin
+  - curl -Lo build/_output/bin/operator-sdk https://github.com/operator-framework/operator-sdk/releases/download/v0.8.1/operator-sdk-v0.8.1-x86_64-linux-gnu && chmod +x build/_output/bin/operator-sdk
 
 script:
   - make build
