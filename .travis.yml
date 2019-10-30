@@ -1,0 +1,30 @@
+sudo: required
+language: go
+
+go:
+  - 1.12.x
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+install:
+  - echo "Please don't go get"
+
+script:
+  - make build
+
+after_success:
+  - if [ ! -s "$TRAVIS_TAG" ] ; then
+      docker tag sinoreps/cmpp-operator:latest sinoreps/cmpp-operator:$TRAVIS_TAG;
+      echo $DOCKER_PASSWORD | docker login -u=$DOCKER_USERNAME --password-stdin;
+      docker push sinoreps/cmpp-operator:$TRAVIS_TAG;
+
+      docker tag sinoreps/cmpp-operator:latest quay.io/sinoreps/cmpp-operator:$TRAVIS_TAG;
+      echo $QUAY_PASSWORD | docker login -u=$QUAY_USERNAME --password-stdin quay.io;
+      docker push quay.io/sinoreps/cmpp-operator:$TRAVIS_TAG;
+    fi
