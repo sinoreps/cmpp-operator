@@ -16,6 +16,7 @@ script:
   - mkdir -p $TRAVIS_BUILD_DIR/build/_output/bin
   - curl -Lo $TRAVIS_BUILD_DIR/build/_output/bin/operator-sdk https://github.com/operator-framework/operator-sdk/releases/download/v0.8.1/operator-sdk-v0.8.1-x86_64-linux-gnu && chmod +x $TRAVIS_BUILD_DIR/build/_output/bin/operator-sdk
   - ls -l
+  - ls -l build/_output/bin/
   - make build
 
 after_success:
