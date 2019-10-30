@@ -3,10 +3,10 @@ kind: CMPPProxy
 metadata:
   name: example-cmppproxy
 spec:
-  # Add fields here
-  image: nginx:alpine
-  enterpriseCode: 999
-  account: test
+  image: sinoreps/cmppproxy:latest
+  account: "333"
+  password: "0555"
   numConnections: 1
-  serverAddr: 127.0.0.4
-  enterpriseCode: "899116"
+  serverAddr: "127.0.0.1"
+  serviceCode: "9999"
+  enterpriseCode: "044022"

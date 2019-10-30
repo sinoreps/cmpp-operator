@@ -44,11 +44,11 @@ kind: CMPPProxy
 metadata:
   name: example-cmppproxy
 spec:
-  image: registry.cn-beijing.aliyuncs.com/sinoreps/cmpp-operator:latest
-  account: 333
-  password: 0555
+  image: sinoreps/cmppproxy:latest
+  account: "333"
+  password: "0555"
   numConnections: 1
-  serverAddr: 127.0.0.1
+  serverAddr: "127.0.0.1"
   serviceCode: "9999"
   enterpriseCode: "044022"
 EOF
