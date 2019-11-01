@@ -16,7 +16,7 @@ spec:
       containers:
         - name: cmpp-operator
           # Replace this with the built image name
-          image: sinoreps/cmpp-operator:latest
+          image: registry.cn-beijing.aliyuncs.com/sinoreps/cmpp-operator:latest
           command:
           - cmpp-operator
           imagePullPolicy: Always

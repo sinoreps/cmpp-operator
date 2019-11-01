@@ -3,7 +3,7 @@ kind: CMPPProxy
 metadata:
   name: example-cmppproxy
 spec:
-  image: sinoreps/cmppproxy:latest
+  image: registry.cn-beijing.aliyuncs.com/sinoreps/cmppproxy:latest
   account: "333"
   password: "0555"
   numConnections: 1
